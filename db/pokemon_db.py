@@ -5,7 +5,7 @@ from botocore.exceptions import ClientError
 boto3.setup_default_session(profile_name="terraform")
 
 class PokemonDB:
-    def __init__(self, table_name="pokemons", region="us-east-1"):
+    def __init__(self, table_name="pokemons", region="us-west-2"):
         self.dynamodb = boto3.resource("dynamodb", region_name=region)
         self.table = self.dynamodb.Table(table_name)
 
@@ -37,7 +37,6 @@ class PokemonDB:
         
     def get_all_pokemons(self):
             try:
-                print("HII p_db")
                 response = self.table.scan()
                 return response.get("Items", [])
             except ClientError as e:

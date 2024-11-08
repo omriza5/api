@@ -2,7 +2,7 @@ import boto3
 from botocore.exceptions import ClientError
 
 boto3.setup_default_session(profile_name="terraform")
-dynamodb = boto3.resource("dynamodb",region_name = "us-east-1")
+dynamodb = boto3.resource("dynamodb",region_name = "us-west-2")
 
 try:   
     table = dynamodb.create_table(
